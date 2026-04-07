@@ -1,1 +1,4 @@
-# FusionQuote-Billet-Optimizer
+"Turning Chips into Competitive Advantage"
+
+このシステムは、長山工業の30年以上にわたる切削加工の現場知見（英一郎氏）と、最新のマルチモーダルAIを融合させた次世代の見積もりエンジンです。
+単なる価格算出ではなく、大量の切粉が出るビレット加工の「価値（スピードと精度）」を米国市場へ論理的に提示します。
