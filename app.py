@@ -25,6 +25,38 @@ with col_in1:
 
 with col_in2:
     st.subheader("2. AI Analysis (Paste JSON)")
+    
+    # --- 新機能：プロンプト自動生成機能 ---
+    with st.expander("💡 Web版LLM(GPTs/Gemini)用の解析プロンプトを作成", expanded=True):
+        st.write("以下のテキストをコピーし、図面(PDF)と一緒にLLMへ送信してください。")
+        
+        # 入力された寸法(dia, length)を自動で組み込むプロンプト
+        prompt_text = f"""あなたは長山工業の熟練見積士であり、5軸切削加工のエキスパートです。
+添付の図面（および写真）を解析し、以下の構造化データ(JSON)のみを出力してください。
+
+【前提条件】
+- 素材サイズ: アルミ丸棒 直径 {dia} mm x 長さ {length} mm
+- 加工機: 5軸横形マシニングセンタ
+
+【推測タスク】
+1. 図面に記載されている使用工具(CUT番号など)の総数をカウントしてください。
+2. 素材の体積と一般的なナックルの形状から、完成重量(kg)を推測してください。
+3. 荒加工での大量の切削（ビレット加工）と、ボーリング等の仕上げ精度を考慮し、想定される総加工時間(時間)を推測してください。
+
+【出力フォーマット（厳密に以下のJSONのみを出力）】
+{{
+  "total_tools": 16,
+  "hours": 15.0,
+  "finish_weight": 8.5
+}}"""
+        st.code(prompt_text, language="markdown")
+    
+    # 既存のJSON入力欄
+    json_str = st.text_area("Web版LLMから出力されたJSONを貼り付けてください", 
+                          placeholder='{"total_tools": 16, "hours": 15.0, "finish_weight": 8.5}',
+                          height=150)
+
+    
     # Web版LLM（MyGPTs等）で図面を解析させた結果をここに貼る
     json_str = st.text_area("Web版LLMからコピーしたJSONを貼り付けてください", 
                           placeholder='{"total_tools": 16, "hours": 15, "finish_weight": 8.5}',
