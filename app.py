@@ -56,12 +56,6 @@ with col_in2:
                           placeholder='{"total_tools": 16, "hours": 15.0, "finish_weight": 8.5}',
                           height=150)
 
-    
-    # Web版LLM（MyGPTs等）で図面を解析させた結果をここに貼る
-    json_str = st.text_area("Web版LLMからコピーしたJSONを貼り付けてください", 
-                          placeholder='{"total_tools": 16, "hours": 15, "finish_weight": 8.5}',
-                          height=150)
-
 # --- 実行ボタン ---
 if st.button("Generate Strategic Quote"):
     if json_str:
